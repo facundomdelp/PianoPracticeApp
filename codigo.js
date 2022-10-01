@@ -1,4 +1,4 @@
-// Defino algunas variables que se inicializarán luego
+// Declaro algunas variables que se inicializarán luego
 let tecnica;
 let escala;
 let nivel;
@@ -7,7 +7,7 @@ let tec;
 let esc;
 let niv;
 
-// Defino e inicializo listado de constantes
+// Declaro e inicializo listado de constantes
 const TECNICA_1 = "legato";
 const TECNICA_2 = "staccato";
 
@@ -28,7 +28,7 @@ const NIVEL_1 = "piano";
 const NIVEL_2 = "forte";
 const NIVEL_3 = "mezzoforte";
 
-// Defino función que arroje un número aleatorio entero
+// FUNCIONES
 function enteroAleatorio (max) {
     return Math.ceil(Math.random()*max);
 }
@@ -38,8 +38,7 @@ function enteroAleatorio (max) {
 // Usuario ingresa su nivel de dificultad para definir la complejidad de los ejercicios musicales
 let dificultad = prompt ("Ingrese el nivel de dificultad (Principiante - Intermedio - Avanzado): ");
 
-// A partir del ingreso del usuario, se definen los ejercicios de manera aleatoria
-
+// A partir del ingreso del usuario, se definen 3 ejercicios de manera aleatoria
 for (let i = 1; i <= 3; i++) {
 
     if (dificultad.toLowerCase() == "principiante") {
