@@ -1,0 +1,48 @@
+/* RESET CSS */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    line-height: 1.5;
+    font-family: "Times New Roman";
+    width: 100%;
+    min-height: 100vh;
+}
+
+a{  
+    text-decoration: none;
+	color: inherit;
+}
+
+ul{
+    list-style: none;
+}
+
+button, input, textarea, select{
+    font: inherit;
+    }
+
+img{
+    width: 100%;
+}
+
+/* BODY */
+
+body {
+    background-image: url(./img/pexels-nikita-khandelwal-685458.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1, h2 {
+    color: floralwhite;
+}
