@@ -1,82 +1,60 @@
-// Declaro algunas variables que se inicializarán luego
-let tecnica;
-let escala;
-let nivel;
-
-let tec;
-let esc;
-let niv;
-
-// Declaro e inicializo listado de constantes
-const TECNICA_1 = "legato";
-const TECNICA_2 = "staccato";
-
-const ESCALA_1 = "FA";
-const ESCALA_2 = "DO";
-const ESCALA_3 = "SOL";
-const ESCALA_4 = "RE";
-const ESCALA_5 = "SI";
-const ESCALA_6 = "SIb";
-const ESCALA_7 = "MI";
-const ESCALA_8 = "LA";
-const ESCALA_9 = "REb";
-const ESCALA_10 = "MIb";
-const ESCALA_11 = "FA#";
-const ESCALA_12 = "LAb";
-
-const NIVEL_1 = "piano";
-const NIVEL_2 = "forte";
-const NIVEL_3 = "mezzoforte";
+// Declaro e inicializo listado de arrays
+const tonica = ["FA", "DO", "SOL", "RE", "SI", "SIb", "MI", "LA", "REb", "MIb", "FA#", "LAb"];
+const tecnica = ["legato", "staccato"];
+const nivel = ["piano", "forte", "mezzoforte"]
 
 // FUNCIONES
+//Función que retorna un número aleatorio entre 0 y max
 function enteroAleatorio (max) {
-    return Math.ceil(Math.random()*max);
+    return Math.floor(Math.random()*max);
+}
+
+//Función constructora de objetos a partir de la dificultad del ejercicio
+class Escala {
+    constructor (ejercicio, dificultad, tonica, tecnica, nivel) {
+        this.ejercicio = ejercicio;
+        this.dificultad = dificultad;
+        this.tonica = tonica;
+        this.tecnica = tecnica;
+        this.nivel = nivel;
+    }
 }
 
 //SIMULADOR
+// Usuario ingresa la cantidad de ejercicios a llevar a cabo
+let cantidadEjercicios = prompt ("Ingrese cantidad de ejercicios a realizar: ");
+const escalas = [];
 
-// Usuario ingresa su nivel de dificultad para definir la complejidad de los ejercicios musicales
-let dificultad = prompt ("Ingrese el nivel de dificultad (Principiante - Intermedio - Avanzado): ");
+for (let i = 1; i <= cantidadEjercicios; i++) {
 
-// A partir del ingreso del usuario, se definen 3 ejercicios de manera aleatoria
-for (let i = 1; i <= 3; i++) {
+    // Usuario ingresa el nivel de dificultad para definir la complejidad de cada ejercicio musical
+    let dificultad = prompt ("Ingrese el nivel de dificultad (Principiante - Intermedio - Avanzado): ");
 
-    if (dificultad.toLowerCase() == "principiante") {
 
-        tec = enteroAleatorio (1);
-        esc = enteroAleatorio (4);
+    // En función de la cantidad de ejercicios y la dificultad de cada uno, se va creando un array de objetos
+    // A medida que se va creando el array, se va lanzando el ejercicio
+    switch (dificultad.toLowerCase()) {
+
+        case "principiante":
+            escalas.push (new Escala ("Ejercicio " + i, dificultad, tonica[enteroAleatorio(4)], tecnica[enteroAleatorio(1)], ""));
+            alert(escalas[i-1].ejercicio.toUpperCase() + ": Realice la escala de " + escalas[i-1].tonica + " mayor en "+ escalas[i-1].tecnica);
+            break;
         
-        tecnica = eval ("TECNICA_" + tec);
-        escala = eval ("ESCALA_" + esc);
+        case "intermedio":
+            escalas.push (new Escala ("Ejercicio " + i, dificultad, tonica[enteroAleatorio(8)], tecnica[enteroAleatorio(2)], ""));
+            alert(escalas[i-1].ejercicio.toUpperCase() + ": Realice la escala de " + escalas[i-1].tonica + " mayor en "+ escalas[i-1].tecnica);
+            break;
 
-        alert ("EJERCICIO " + i + ": Realice la escala de " + escala + " mayor en " + tecnica);
+        case "avanzado":
+            escalas.push (new Escala ("Ejercicio " + i, dificultad, tonica[enteroAleatorio(12)], tecnica[enteroAleatorio(2)], nivel[enteroAleatorio(3)]));
+            alert(escalas[i-1].ejercicio.toUpperCase() + ": Realice la escala de " + escalas[i-1].tonica + " mayor en "+ escalas[i-1].tecnica + " y " + escalas[i-1].nivel);
+            break;
 
-    } else if (dificultad.toLowerCase() == "intermedio") {
-
-        tec = enteroAleatorio (2);
-        esc = enteroAleatorio (8);
-
-        tecnica = eval ("TECNICA_" + tec);
-        escala = eval ("ESCALA_" + esc);
-
-        alert ("EJERCICIO " + i + ": Realice la escala de " + escala + " mayor en " + tecnica);
-
-    } else if (dificultad.toLowerCase() == "avanzado") {
-
-        tec = enteroAleatorio (2);
-        esc = enteroAleatorio (12);
-        niv = enteroAleatorio (3);
-
-        tecnica = eval ("TECNICA_" + tec);
-        escala = eval ("ESCALA_" + esc);
-        nivel = eval ("NIVEL_" + niv);
-
-        alert ("EJERCICIO " + i + ": Realice la escala de " + escala + " mayor en " + tecnica + " y " + nivel);
-
-    } else {
-        alert ("¡Inténtelo nuevamente!");
-        window.location.reload ();
-        break;
+        default:
+            alert ("¡Inténtelo nuevamente!");
+            break;
     }
-
 }
+
+// Imprimo en consola todos los ejercicios que se realizaron
+console.log(escalas);
