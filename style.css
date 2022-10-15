@@ -1,3 +1,22 @@
+/* VARIABLES */
+
+:root {
+
+    /* Pallete */
+    --color-primary: #D0C625;
+    --color-secondary: #283044;
+    --color-tertiary: #9C3848;
+
+    /* Font Family */
+    --text-primary: 'Open Sans';
+    --text-secondary: 'Arial';
+    --text-tertiary: 'helvetica';
+
+    /* Spacings */
+    --space: 18px;
+
+}
+
 /* RESET CSS */
 
 *{
@@ -6,43 +25,172 @@
     box-sizing: border-box;
 }
 
-html{
+html {
+    
     font-size: 62.5%;
 }
 
-body{
+body {
+
     line-height: 1.5;
     font-family: "Times New Roman";
     width: 100%;
     min-height: 100vh;
 }
 
-a{  
+a {  
+
     text-decoration: none;
 	color: inherit;
 }
 
-ul{
+ul {
+
     list-style: none;
 }
 
-button, input, textarea, select{
-    font: inherit;
-    }
+button, input, textarea, select {
 
-img{
+    font: inherit;
+}
+
+img {
+
     width: 100%;
 }
 
 /* BODY */
 
 body {
+
     background-image: url(./img/fondo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
+    max-width: 425px;
+    margin-inline: auto;
+    margin-top: var(--space);
+
 }
 
-h1, h2 {
-    color: floralwhite;
+h1 {
+
+    text-align: center;
+    color: white;
+    margin-bottom: var(--space);
 }
+
+/* LAY OUT */
+
+div {
+
+    display: flex;
+    gap: .75em;
+    margin-block: calc(.6em);
+}
+
+div span {
+
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5em;
+
+    border: solid #212121 0.1em;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    box-shadow: 0.15em 0.15em 0.05em 0.05em black;
+}
+
+ul {
+
+    margin-inline: auto;
+}
+
+/* PIANO */
+
+ul {
+
+    height: 18.875em;
+    width: 34em;
+    margin: 2em auto;
+    padding: 3em 0 0 3em;
+    position: relative;
+    text-align: center;
+
+    border: 1px solid #160801;
+    border-radius: 1em;
+    background: linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/187/vwood.png);
+    box-shadow: 0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5);
+}
+
+li {
+
+    margin: 0;
+    padding: 0;
+    position: relative;
+    float: left;
+}
+  
+ul .blanca {
+
+    height: 16em;
+    width: 4em;
+    z-index: 1;
+    line-height: 29em;
+
+    border-left: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0 0 5px 5px;
+    box-shadow: -1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
+    background: linear-gradient(to bottom,#eee 0%,#fff 100%);
+}
+  
+ul .blanca:active {
+
+    border-top: 1px solid #777;
+    border-left: 1px solid #999;
+    border-bottom: 1px solid #999;
+    box-shadow: 2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+    background: linear-gradient(to bottom,#fff 0%,#e9e9e9 100%);
+}
+  
+.negra {
+
+    height: 8em;
+    width: 2em;
+    line-height: 12em;
+    margin: 0 0 0 -1em;
+    z-index: 2;
+
+    color: white;
+    border: 1px solid #000;
+    border-radius: 0 0 3px 3px;
+    box-shadow: -1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
+    background: linear-gradient(45deg,#222 0%,#555 100%);
+}
+  
+.negra:active {
+
+    box-shadow: -1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
+    background: linear-gradient(to right,#444 0%,#222 100%);
+}
+  
+#RE,#MI,#SOL,#LA, #SI {
+
+    margin: 0 0 0 -1em;
+}
+  
+ul li:first-child {
+
+    border-radius: 5px 0 5px 5px;
+}
+  
+ul li:last-child {
+
+    border-radius: 0 5px 5px 5px;
+}
+
+/* BOTONES */
