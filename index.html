@@ -5,84 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Piano Practice App</title>
+    <title>PianoPracticeApp</title>
 </head>
 <body>
     
-    <h1>¡Welcome to Piano Practice App!</h1>
+    <h1>¡Welcome to PianoPracticeApp!</h1>
 
     <section class="botones">
+        <ul id="dificultad"></ul>
+    </section>
 
-        <ul id="dificultad">
-            <li>Principiante</li>
-            <li>Intermedio</li>
-            <li>Avanzado</li>
-        </ul>
+    <section class="rutina">
+        <button id="aleatorio">Crear Rutina Aleatoria</button>
+    </section>
 
-        <ul id="tonica">
-            <li>DO</li>
-            <li>REb</li>
-            <li>RE</li>
-            <li>MIb</li>
-            <li>MI</li>
-            <li>FA</li>
-            <li>FA#</li>
-            <li>SOL</li>
-            <li>LAb</li>
-            <li>LA</li>
-            <li>SIb</li>
-            <li>SI</li>
-        </ul>
-
-        <ul id="tecnica">
-            <li>Legato</li>
-            <li>Staccato</li>
-        </ul>
-
+    <section class="botones">
+        <ul id="tonica"></ul>
+        <ul id="tecnica"></ul>
     </section>
 
     <ul class="piano">
-        <li class="blanca" id="do">DO</li>
-        <li class="negra" id="REb">REb</li>
-        <li class="blanca" id="RE">RE</li>
-        <li class="negra" id="MIb">MIb</li>
-        <li class="blanca" id="MI">MI</li>
-        <li class="blanca" id="FA">FA</li>
-        <li class="negra" id="FA#">FA#</li>
-        <li class="blanca" id="SOL">SOL</li>
-        <li class="negra" id="LAb">LAb</li>
-        <li class="blanca" id="LA">LA</li>
-        <li class="negra" id="SIb">SIb</li>
-        <li class="blanca" id="SI">SI</li>
+        <li class="blanca" id="pianoDO">DO</li>
+        <li class="negra" id="pianoREb">REb</li>
+        <li class="blanca" id="pianoRE">RE</li>
+        <li class="negra" id="pianoMIb">MIb</li>
+        <li class="blanca" id="pianoMI">MI</li>
+        <li class="blanca" id="pianoFA">FA</li>
+        <li class="negra" id="pianoFA#">FA#</li>
+        <li class="blanca" id="pianoSOL">SOL</li>
+        <li class="negra" id="pianoLAb">LAb</li>
+        <li class="blanca" id="pianoLA">LA</li>
+        <li class="negra" id="pianoSIb">SIb</li>
+        <li class="blanca" id="pianoSI">SI</li>
     </ul>
 
     <section class="botones">
-
-        <ul id="nivel">
-            <li>Piano</li>
-            <li>Forte</li>
-            <li>Mezzoforte</li>
-        </ul>
-
-        <ul id="familia">
-            <li>Melódica mayor</li>
-            <li>Melódica menor</li>
-            <li>Armónica mayor</li>
-            <li>Armónica menor</li>
-        </ul>
-
-        <ul id="modo">
-            <li>Jónico</li>
-            <li>Eólico</li>
-            <li>Dórico</li>
-            <li>Locrio</li>
-            <li>Lidio</li>
-            <li>Mixolidio</li>
-            <li>Frigio</li>
-        </ul>
-
+        <ul id="nivel"></ul>
+        <ul id="familia"></ul>
+        <ul id="modo"></ul>
     </section>
 
     <script src="./codigo.js"></script>
+
 </body>
 </html>
