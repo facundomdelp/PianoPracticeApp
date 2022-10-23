@@ -7,6 +7,18 @@
 
 }
 
+/* ANIMACIONES */
+
+@keyframes animacionInstrucciones {
+
+    100% {
+        z-index: 5;
+        width: 40em;
+        height: 51em;
+        margin-left: calc(1.75em);
+        }
+}
+
 /* RESET CSS */
 
 *{
@@ -64,11 +76,55 @@ body {
 
 }
 
-h1 {
+#inicio {
 
-    text-align: center;
-    color: white;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: var(--space);
+}
+
+#inicio h1 {
+
+    font-size: 2em;
+    color: white;
+}
+
+#instrucciones {
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 9em;
+    height: 2.25em;
+    overflow: hidden;
+    align-items: center;
+    padding: .4em;
+    margin-left: 33.5em;
+    background: rgba(255, 255, 255, 0.52);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mostrarInstrucciones {
+    animation: animacionInstrucciones 1 linear .25s .05s; animation-fill-mode: both;
+}
+
+
+#instrucciones span {
+
+    align-self: flex-end;
+    text-align: center;
+    font-size: .9em;
+    font-weight: 600;
+}
+
+#instrucciones p {
+    
+    margin-top: 1em;
+    font-size: 1.5em;
+    align-self: flex-start;
 }
 
 /* LAY OUT */

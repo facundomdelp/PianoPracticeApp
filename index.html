@@ -9,7 +9,22 @@
 </head>
 <body>
     
-    <h1>¡Welcome to PianoPracticeApp!</h1>
+    <section id="inicio">
+        <h1>¡Bienvenido a PianoPracticeApp!</h1>
+        <span id="instrucciones">
+            <span id="botonInstrucciones" style="cursor: pointer">INSTRUCCIONES</span>
+            <p>
+                Bienvenido a PianoPracticeApp, la aplicación que te ayudará a practicar tus lecciones de piano, creando rutinas aleatorias.<br>
+                En primer lugar, elegí tu nivel de piano. <br>
+                Para los estudiantes que se están iniciando con este instrumento, seleccionar el botón "Principiante". <br>
+                Para los estudiantes que ya tienen algún conocimiento, seleccionar el botón "Intermedio". <br>
+                Para aquellos estudiantes de alto nivel, seleccionar el botón "Avanzado". <br>
+                De acuerdo al botón seleccionado, se desbloquearán los diferentes elementos que componen a una escala musical, para que puedas practicar en función de tus conocimientos. <br>
+                Para esto, el botón "Crear Rutina Aleatoria", te brindará una escala de diferentes elementos de manera aleatoria, que depende de la dificultad seleccionada. <br>
+                La figura del piano le indicará cuáles son las notas que componen aquella escala, para que puedas comenzar a practicarla con tu instrumento musical. <br>
+            </p>
+        </span>
+    </section>
 
     <section class="botones">
         <ul id="dificultad"></ul>
@@ -21,28 +36,29 @@
 
     <section class="botones">
         <ul id="tonica"></ul>
-        <ul id="tecnica"></ul>
+        <ul id="familia"></ul>
+
     </section>
 
     <ul class="piano">
-        <li class="blanca" id="pianoDO"></li>
-        <li class="negra" id="pianoREb"></li>
-        <li class="blanca" id="pianoRE"></li>
-        <li class="negra" id="pianoMIb"></li>
-        <li class="blanca" id="pianoMI"></li>
-        <li class="blanca" id="pianoFA"></li>
-        <li class="negra" id="pianoFA#"></li>
-        <li class="blanca" id="pianoSOL"></li>
-        <li class="negra" id="pianoLAb"></li>
-        <li class="blanca" id="pianoLA"></li>
-        <li class="negra" id="pianoSIb"></li>
-        <li class="blanca" id="pianoSI"></li>
+        <li style="cursor: pointer" class="blanca" id="pianoDO"></li>
+        <li style="cursor: pointer" class="negra" id="pianoREb"></li>
+        <li style="cursor: pointer" class="blanca" id="pianoRE"></li>
+        <li style="cursor: pointer" class="negra" id="pianoMIb"></li>
+        <li style="cursor: pointer" class="blanca" id="pianoMI"></li>
+        <li style="cursor: pointer" class="blanca" id="pianoFA"></li>
+        <li style="cursor: pointer" class="negra" id="pianoFA#"></li>
+        <li style="cursor: pointer" class="blanca" id="pianoSOL"></li>
+        <li style="cursor: pointer" class="negra" id="pianoLAb"></li>
+        <li style="cursor: pointer" class="blanca" id="pianoLA"></li>
+        <li style="cursor: pointer" class="negra" id="pianoSIb"></li>
+        <li style="cursor: pointer" class="blanca" id="pianoSI"></li>
     </ul>
 
     <section class="botones">
-        <ul id="nivel"></ul>
-        <ul id="familia"></ul>
         <ul id="modo"></ul>
+        <ul id="nivel"></ul>
+        <ul id="tecnica"></ul>
     </section>
 
     <script src="./constantes.js"></script>
