@@ -9,10 +9,7 @@ function renderizarBotones() {
         }
     }
     habilitarBoton(dificultades);
-    document.getElementById(`btnPrincipiante`).className = "enabled";
-    habilitarBoton(tonicasPrincipiantes);
-    habilitarBoton(tonicasPrincipiantes);
-    habilitarBoton(tecnicas);
+    deshabilitarBoton(aleatorio);
 }
 
 // Botones habilitados para activar
@@ -40,10 +37,8 @@ function mostrarUOcultarInstrucciones() {
 }
 
 // Botones activados
-function activarBoton(btns) {
-    for(const x of btns) {
-        document.getElementById(`btn${x}`).className = "enabled";
-    }
+function activarBoton(btn) {
+    document.getElementById(`btn${btn}`).className += "enabled";
 }
 
 
@@ -59,22 +54,19 @@ function deshabilitarTodosLosBotones() {
 // Habilitar botones según la dificultad elegida
 function funcionDificultadSeleccionada(dificultad) {
     deshabilitarTodosLosBotones();
+    habilitarBoton(aleatorio)
+    habilitarBoton(dificultades);
+    habilitarBoton(tecnicas);
     if(dificultad == "Principiante") {
-        habilitarBoton(dificultades);
         document.getElementById("btnPrincipiante").className = "enabled";
         habilitarBoton(tonicasPrincipiantes);
-        habilitarBoton(tecnicas);
     } else if(dificultad == "Intermedio") {
-        habilitarBoton(dificultades);
         document.getElementById("btnIntermedio").className = "enabled";
         habilitarBoton(tonicasIntermedias);
-        habilitarBoton(tecnicas);
         habilitarBoton(modosIntermedios);
     } else if(dificultad == "Avanzado") {
-        habilitarBoton(dificultades);
         document.getElementById("btnAvanzado").className = "enabled";
         habilitarBoton(tonicasAvanzadas);
-        habilitarBoton(tecnicas);
         habilitarBoton(niveles);
         habilitarBoton(familias);
         habilitarBoton(modosAvanzados);
@@ -83,6 +75,7 @@ function funcionDificultadSeleccionada(dificultad) {
 
 // Generar una rutina aleatoria a partir de la dificultad seleccionada
 function crearRutina() {
+
     for(const dificultad of dificultades) {
         let dificultadSeleccionada = dificultad
         dificultadSeleccionada += "." + document.getElementById(`btn${dificultad}`).className;
@@ -99,9 +92,9 @@ function crearRutina() {
             ));
 
             habilitarBoton(tonicasPrincipiantes);
-            document.getElementById("btn" + escalas[escalas.length - 1].tonica).className += "principianteEnabled";
+            activarBoton(escalas[escalas.length - 1].tonica);
             habilitarBoton(tecnicas);
-            document.getElementById("btn" + escalas[escalas.length - 1].tecnica).className += "principianteEnabled";
+            activarBoton(escalas[escalas.length - 1].tecnica);
 
             desactivarTeclasPiano();
             activarEscalaPiano(escalas);
@@ -119,11 +112,11 @@ function crearRutina() {
             ));
 
             habilitarBoton(tonicasIntermedias);
-            document.getElementById("btn" + escalas[escalas.length - 1].tonica).className += "intermedioEnabled";
+            activarBoton(escalas[escalas.length - 1].tonica);
             habilitarBoton(modosIntermedios);
-            document.getElementById("btn" + escalas[escalas.length - 1].modo).className += "intermedioEnabled";
+            activarBoton(escalas[escalas.length - 1].modo);
             habilitarBoton(tecnicas);
-            document.getElementById("btn" + escalas[escalas.length - 1].tecnica).className += "intermedioEnabled";
+            activarBoton(escalas[escalas.length - 1].tecnica);
 
             desactivarTeclasPiano();
             activarEscalaPiano(escalas);
@@ -140,21 +133,23 @@ function crearRutina() {
             ));
 
             habilitarBoton(tonicasAvanzadas);
-            document.getElementById("btn" + escalas[escalas.length - 1].tonica).className += "avanzadoEnabled";
+            activarBoton(escalas[escalas.length - 1].tonica);
             habilitarBoton(familias);
-            document.getElementById("btn" + escalas[escalas.length - 1].familia).className += "avanzadoEnabled";
+            activarBoton(escalas[escalas.length - 1].familia);
             habilitarBoton(modosAvanzados);
-            document.getElementById("btn" + escalas[escalas.length - 1].modo).className += "avanzadoEnabled";
+            activarBoton(escalas[escalas.length - 1].modo);
             habilitarBoton(tecnicas);
-            document.getElementById("btn" + escalas[escalas.length - 1].tecnica).className += "avanzadoEnabled";
+            activarBoton(escalas[escalas.length - 1].tecnica);
             habilitarBoton(niveles);
-            document.getElementById("btn" + escalas[escalas.length - 1].nivel).className += "avanzadoEnabled";
+            activarBoton(escalas[escalas.length - 1].nivel);
 
             desactivarTeclasPiano();
             activarEscalaPiano(escalas);
         }
     }
 
+    // Guardo en el Local Storage las nuevas escalas practicadas
+    localStorage.setItem("escalasPracticadas", JSON.stringify(escalas));
     console.log(escalas);
 }
 
@@ -216,19 +211,19 @@ function activarEscalaPiano(escalas) {
     activarTeclasPiano(escalas[escalas.length - 1].tonica);
     let saltoDeTonos
     if(escalas[escalas.length - 1].familia == familias[0]) {
-        saltoDeTonos = [1, 1, 1/2, 1, 1, 1]; // Saltos de semitonos para escala melódica mayor (intervalos) - ver documentación adjunta de teoría musical
+        saltoDeTonos = [1, 1, 1/2, 1, 1, 1, 1/2]; // Saltos de semitonos para escala melódica mayor (intervalos) - ver documentación adjunta de teoría musical
         intervalosSegunModo(escalas, saltoDeTonos);
         activarSieteTeclasPiano(escalas, saltoDeTonos);
     }else if(escalas[escalas.length - 1].familia == familias[1]) {
-        saltoDeTonos = [1/2, 1, 1/2, 1, 1, 1]; // Saltos de semitonos para escala melódica menor (intervalos) - ver documentación adjunta de teoría musical
+        saltoDeTonos = [1/2, 1, 1/2, 1, 1, 1, 1]; // Saltos de semitonos para escala melódica menor (intervalos) - ver documentación adjunta de teoría musical
         intervalosSegunModo(escalas, saltoDeTonos);
         activarSieteTeclasPiano(escalas, saltoDeTonos);
     }else if(escalas[escalas.length - 1].familia == familias[2]) {
-        saltoDeTonos = [1, 1, 1/2, 1 + 1/2, 1/2, 1]; // Saltos de semitonos para escala harmónica menor (intervalos) - ver documentación adjunta de teoría musical
+        saltoDeTonos = [1, 1, 1/2, 1 + 1/2, 1/2, 1, 1/2]; // Saltos de semitonos para escala harmónica menor (intervalos) - ver documentación adjunta de teoría musical
         intervalosSegunModo(escalas, saltoDeTonos);
         activarSieteTeclasPiano(escalas, saltoDeTonos);
     }else if(escalas[escalas.length - 1].familia == familias[3]) {
-        saltoDeTonos = [1, 1, 1/2, 1, 1/2, 1 + 1/2]; // Saltos de semitonos para escala harmónica mayor (intervalos) - ver documentación adjunta de teoría musical
+        saltoDeTonos = [1, 1, 1/2, 1, 1/2, 1 + 1/2, 1/2]; // Saltos de semitonos para escala harmónica mayor (intervalos) - ver documentación adjunta de teoría musical
         intervalosSegunModo(escalas, saltoDeTonos);
         activarSieteTeclasPiano(escalas, saltoDeTonos);
     }
@@ -254,8 +249,144 @@ function intervalosSegunModo(escalas, saltoDeTonos) {
     return saltoDeTonos
 }
 
+// Función para cuando se activa un botón de tónica de manera independiente, es decir, sin utilizar el botón de rutina
+function activarBotonTonicaIndependiente(tonica) {
+
+    if(document.getElementById(`btn${tonica}`).className !== "disabled") {
+        desactivarTeclasPiano();
+
+        if(document.getElementById("btnPrincipiante").className == "enabled") {
+            habilitarBoton(tonicasPrincipiantes);
+            familia = familias[0];
+            modo = modosOrdenados[0];      
+        }else if(document.getElementById("btnIntermedio").className == "enabled") {
+            habilitarBoton(tonicasIntermedias);
+            familia = familias[0];
+            if(document.getElementById("modo").getElementsByClassName("enabled")[0] == undefined) {
+                modo = modosOrdenados[0];
+                activarBoton(modosOrdenados[0]);
+            } else {
+                modo = document.getElementById("modo").getElementsByClassName("enabled")[0].innerText;
+            }
+        }else if(document.getElementById("btnAvanzado").className == "enabled") {
+            habilitarBoton(tonicasAvanzadas);
+            if(document.getElementById("familia").getElementsByClassName("enabled")[0] == undefined) {
+                familia = familias[0];
+                activarBoton(familias[0])
+            } else {
+                familia = document.getElementById("familia").getElementsByClassName("enabled")[0].innerText;
+            }
+            if(document.getElementById("modo").getElementsByClassName("enabled")[0] == undefined) {
+                modo = modosOrdenados[0];
+                activarBoton(modosOrdenados[0])
+            } else {
+                modo = document.getElementById("modo").getElementsByClassName("enabled")[0].innerText;
+            }      
+        }
+
+        escalasAuxiliaresParaActivarTeclasPiano.push(new Escala(
+            undefined,
+            undefined,
+            tonica,
+            familia,
+            modo,
+            undefined,
+            undefined,
+        ));    
+
+        activarBoton(tonica);
+
+        activarEscalaPiano(escalasAuxiliaresParaActivarTeclasPiano);
+    }
+}
+
+// Función para cuando se activa un botón de familia de manera independiente, es decir, sin utilizar el botón de rutina
+function activarBotonFamiliaIndependiente(familia) {
+
+    if(document.getElementById(`btn${familia}`).className !== "disabled") {
+        desactivarTeclasPiano();
+
+        if(document.getElementById("btnAvanzado").className == "enabled") {
+            habilitarBoton(familias);
+            if(document.getElementById("tonica").getElementsByClassName("enabled")[0] == undefined) {
+                tonica = tonicasOrdenadas[0];
+                activarBoton(tonicasOrdenadas[0])
+            } else {
+                tonica = document.getElementById("tonica").getElementsByClassName("enabled")[0].innerText;
+            }
+            if(document.getElementById("modo").getElementsByClassName("enabled")[0] == undefined) {
+                modo = modosOrdenados[0];
+                activarBoton(modosOrdenados[0])
+            } else {
+                modo = document.getElementById("modo").getElementsByClassName("enabled")[0].innerText;
+            }      
+        }
+
+        escalasAuxiliaresParaActivarTeclasPiano.push(new Escala(
+            undefined,
+            undefined,
+            tonica,
+            familia,
+            modo,
+            undefined,
+            undefined,
+        ));    
+
+        activarBoton(familia);
+
+        activarEscalaPiano(escalasAuxiliaresParaActivarTeclasPiano);
+    }
+}
+
+// Función para cuando se activa un botón de modo de manera independiente, es decir, sin utilizar el botón de rutina
+function activarBotonModoIndependiente(modo) {
+
+    if(document.getElementById(`btn${modo}`).className !== "disabled") {
+        desactivarTeclasPiano();
+
+        if(document.getElementById("btnIntermedio").className == "enabled") {
+            habilitarBoton(modosIntermedios);
+            if(document.getElementById("tonica").getElementsByClassName("enabled")[0] == undefined) {
+                tonica = tonicasOrdenadas[0];
+                activarBoton(tonicasOrdenadas[0]);
+            } else {
+                tonica = document.getElementById("tonica").getElementsByClassName("enabled")[0].innerText;
+            }
+        }else if(document.getElementById("btnAvanzado").className == "enabled") {
+            habilitarBoton(modosAvanzados);
+            if(document.getElementById("tonica").getElementsByClassName("enabled")[0] == undefined) {
+                tonica = tonicasOrdenadas[0];
+                activarBoton(tonicasOrdenadas[0])
+            } else {
+                tonica = document.getElementById("tonica").getElementsByClassName("enabled")[0].innerText;
+            }
+            if(document.getElementById("familia").getElementsByClassName("enabled")[0] == undefined) {
+                familia = familias[0];
+                activarBoton(familias[0])
+            } else {
+                familia = document.getElementById("familia").getElementsByClassName("enabled")[0].innerText;
+            }      
+        }
+
+        escalasAuxiliaresParaActivarTeclasPiano.push(new Escala(
+            undefined,
+            undefined,
+            tonica,
+            familia,
+            modo,
+            undefined,
+            undefined,
+        ));    
+
+        activarBoton(modo);
+
+        activarEscalaPiano(escalasAuxiliaresParaActivarTeclasPiano);
+    }
+}
+
 // Función para reproducir el sonido
 function reproducirSonido(tonica) {
-        var audio = sonidos[tonicasOrdenadas.indexOf(tonica)];
+        let audio = sonidos[tonicasOrdenadas.indexOf(tonica)];
+        audio.currentTime = 0
         audio.play();
 }

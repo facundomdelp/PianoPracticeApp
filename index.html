@@ -9,61 +9,66 @@
 </head>
 <body>
     
-    <section id="inicio">
-        <h1>¡Bienvenido a PianoPracticeApp!</h1>
-        <span id="instrucciones">
-            <span id="botonInstrucciones" style="cursor: pointer">INSTRUCCIONES</span>
-            <p>
-                Bienvenido a PianoPracticeApp, la aplicación que te ayudará a practicar tus lecciones de piano, creando rutinas aleatorias.<br>
-                En primer lugar, elegí tu nivel de piano. <br>
-                Para los estudiantes que se están iniciando con este instrumento, seleccionar el botón "Principiante". <br>
-                Para los estudiantes que ya tienen algún conocimiento, seleccionar el botón "Intermedio". <br>
-                Para aquellos estudiantes de alto nivel, seleccionar el botón "Avanzado". <br>
-                De acuerdo al botón seleccionado, se desbloquearán los diferentes elementos que componen a una escala musical, para que puedas practicar en función de tus conocimientos. <br>
-                Para esto, el botón "Crear Rutina Aleatoria", te brindará una escala de diferentes elementos de manera aleatoria, que depende de la dificultad seleccionada. <br>
-                La figura del piano le indicará cuáles son las notas que componen aquella escala, para que puedas comenzar a practicarla con tu instrumento musical. <br>
-            </p>
-        </span>
+    <section id="principal">
+    
+        <section id="inicio">
+            <h1>¡Bienvenido a PianoPracticeApp!</h1>
+            <span id="instrucciones">
+                <span id="botonInstrucciones" style="cursor: pointer">INSTRUCCIONES</span>
+                <p>
+                    <br> Bienvenido a PianoPracticeApp, la aplicación que te ayudará a practicar tus lecciones de piano, creando escalas aleatorias.<br><br>
+                    Esta aplicación, es para que uses junto a tu piano y puedas mejorar tu performance mediante sencillos ejercicios de rutina. <br><br>
+                    En primer lugar, elige tu nivel de piano. <br>
+                    Para los estudiantes que se están iniciando con este instrumento, seleccionar el botón "Principiante". <br><br>
+                    Para los estudiantes que ya tienen algún conocimiento, seleccionar el botón "Intermedio". <br><br>
+                    Para aquellos estudiantes de alto nivel, seleccionar el botón "Avanzado". <br><br>
+                    De acuerdo al botón seleccionado, se desbloquearán los diferentes elementos que componen a una escala musical, para que puedas practicar ea partir de tus conocimientos. <br><br>
+                    Para esto, el botón "Crear Escala Aleatoria", te brindará una escala de diferentes elementos de manera aleatoria, que depende de la dificultad seleccionada. <br><br>
+                    La figura del piano te indicará cuáles son las notas que componen aquella escala, para que puedas comenzar a practicarla con tu propio piano. <br><br>
+                </p>
+            </span>
+        </section>
+
+        <section class="botones">
+            <ul id="dificultad"></ul>
+        </section>
+
+        <section class="rutina botones">
+            <button id="btnAleatorio">Crear Escala Aleatoria</button>
+        </section>
+
+        <section class="botones">
+            <ul id="tonica"></ul>
+            <ul id="familia"></ul>
+
+        </section>
+
+        <ul class="piano">
+            <li style="cursor: pointer" class="blanca" id="pianoDO"></li>
+            <li style="cursor: pointer" class="negra" id="pianoREb"></li>
+            <li style="cursor: pointer" class="blanca" id="pianoRE"></li>
+            <li style="cursor: pointer" class="negra" id="pianoMIb"></li>
+            <li style="cursor: pointer" class="blanca" id="pianoMI"></li>
+            <li style="cursor: pointer" class="blanca" id="pianoFA"></li>
+            <li style="cursor: pointer" class="negra" id="pianoFA#"></li>
+            <li style="cursor: pointer" class="blanca" id="pianoSOL"></li>
+            <li style="cursor: pointer" class="negra" id="pianoLAb"></li>
+            <li style="cursor: pointer" class="blanca" id="pianoLA"></li>
+            <li style="cursor: pointer" class="negra" id="pianoSIb"></li>
+            <li style="cursor: pointer" class="blanca" id="pianoSI"></li>
+        </ul>
+
+        <section class="botones">
+            <ul id="modo"></ul>
+            <ul id="tecnica"></ul>
+            <ul id="nivel"></ul>
+        </section>
+
+        <script src="./constantes.js"></script>
+        <script src="./funciones.js"></script>
+        <script src="./eventos.js"></script>
+
     </section>
-
-    <section class="botones">
-        <ul id="dificultad"></ul>
-    </section>
-
-    <section class="rutina">
-        <button id="aleatorio">Crear Rutina Aleatoria</button>
-    </section>
-
-    <section class="botones">
-        <ul id="tonica"></ul>
-        <ul id="familia"></ul>
-
-    </section>
-
-    <ul class="piano">
-        <li style="cursor: pointer" class="blanca" id="pianoDO"></li>
-        <li style="cursor: pointer" class="negra" id="pianoREb"></li>
-        <li style="cursor: pointer" class="blanca" id="pianoRE"></li>
-        <li style="cursor: pointer" class="negra" id="pianoMIb"></li>
-        <li style="cursor: pointer" class="blanca" id="pianoMI"></li>
-        <li style="cursor: pointer" class="blanca" id="pianoFA"></li>
-        <li style="cursor: pointer" class="negra" id="pianoFA#"></li>
-        <li style="cursor: pointer" class="blanca" id="pianoSOL"></li>
-        <li style="cursor: pointer" class="negra" id="pianoLAb"></li>
-        <li style="cursor: pointer" class="blanca" id="pianoLA"></li>
-        <li style="cursor: pointer" class="negra" id="pianoSIb"></li>
-        <li style="cursor: pointer" class="blanca" id="pianoSI"></li>
-    </ul>
-
-    <section class="botones">
-        <ul id="modo"></ul>
-        <ul id="nivel"></ul>
-        <ul id="tecnica"></ul>
-    </section>
-
-    <script src="./constantes.js"></script>
-    <script src="./funciones.js"></script>
-    <script src="./eventos.js"></script>
 
 </body>
 </html>

@@ -5,6 +5,14 @@
     /* Spacings */
     --space: 18px;
 
+    /* Font Family */
+    --font: sans-serif;
+
+    /* Pallete */
+    --color1: #1F2023;
+    --color2: #e5f876;
+    --color3: #b6be84;
+
 }
 
 /* ANIMACIONES */
@@ -13,9 +21,9 @@
 
     100% {
         z-index: 5;
-        width: 40em;
+        width: 56em;
         height: 51em;
-        margin-left: calc(1.75em);
+        margin-left: 0;
         }
 }
 
@@ -35,7 +43,7 @@ html {
 body {
 
     line-height: 1.5;
-    font-family: "Times New Roman";
+    font-family: var(--font);
     width: 100%;
     min-height: 100vh;
 }
@@ -61,7 +69,7 @@ img {
     width: 100%;
 }
 
-/* BODY */
+/* BODY Y ENCABEZADO*/
 
 body {
 
@@ -70,10 +78,23 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 
-    max-width: 425px;
-    margin-inline: auto;
-    margin-top: var(--space);
+    overflow: hidden;
+}
 
+#principal {
+
+    margin-inline: auto;
+    margin-top: calc(2*var(--space));
+    padding: var(--space);
+    max-width: 600px;
+
+
+    background: rgba(149, 149, 149, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(149, 149, 149, 0.3);
 }
 
 #inicio {
@@ -99,8 +120,8 @@ body {
     overflow: hidden;
     align-items: center;
     padding: .4em;
-    margin-left: 33.5em;
-    background: rgba(255, 255, 255, 0.52);
+    margin-left: 47em;
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -122,8 +143,9 @@ body {
 
 #instrucciones p {
     
+    padding-inline: 2em;
     margin-top: 1em;
-    font-size: 1.5em;
+    font-size: 1.25em;
     align-self: flex-start;
 }
 
@@ -143,7 +165,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 2.5em;
-
 }
 
 .botones ul {
@@ -156,7 +177,7 @@ body {
     display: flex;
 }
 
-.rutina #aleatorio {
+.rutina #btnAleatorio {
     
     height: 5em;
     padding-inline: 1em;
@@ -166,60 +187,42 @@ body {
 
 /* ESTILOS BOTONES */
 
-.botones ul button,
-#aleatorio {
+.botones button {
 
-    border: solid #212121 0.1em;
-    background-color: #f5f5f5;
+    font-family: var(--font);
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--color2);
+    border: 1px solid var(--color2);
+    background-color: var(--color1);
     cursor: pointer;
-    box-shadow: 0.2em 0.2em black;
 }
 
 .botones #dificultad .enabled {
 
     box-shadow: none;
     box-shadow: inset 0.05em 0.05em black;
-}
-
-.botones #dificultad .enabled:first-child {
-    background: rgb(0, 255, 0);
-}
-
-.botones #dificultad .enabled:nth-child(2) {
-    background: yellow;
-}
-
-.botones #dificultad .enabled:last-child {
-    background: red;
+    background: var(--color2);
+    color: var(--color1);
 }
 
 .botones .disabled {
 
-    background-color: rgb(173, 173, 173);
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color3);
+    color: var(--color3);
     box-shadow: none;
+    cursor: auto;
 }
 
-#tonica .principianteEnabled,
-#tecnica .principianteEnabled {
-    background: rgb(0, 255, 0);
-    box-shadow: none;
-    box-shadow: inset 0.05em 0.05em black;
-}
-
-#tonica .intermedioEnabled,
-#modo .intermedioEnabled,
-#tecnica .intermedioEnabled {
-    background: yellow;
-    box-shadow: none;
-    box-shadow: inset 0.05em 0.05em black;
-}
-
-#tonica .avanzadoEnabled,
-#familia .avanzadoEnabled,
-#modo .avanzadoEnabled,
-#tecnica .avanzadoEnabled,
-#nivel .avanzadoEnabled {
-    background: red;
+#btnAleatorio:hover,
+#tonica .enabled,
+#familia .enabled,
+#modo .enabled,
+#tecnica .enabled,
+#nivel .enabled {
+    background: var(--color2);
+    color: var(--color1);
     box-shadow: none;
     box-shadow: inset 0.05em 0.05em black;
 }

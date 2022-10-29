@@ -10,6 +10,8 @@ const modosAvanzados = modosIntermedios.concat(["Dórico", "Frigio", "Lidio", "M
 const tecnicas = ["Legato", "Staccato"]
 const niveles = ["Piano", "Forte", "Mezzoforte"]
 
+const aleatorio = ["Aleatorio"]
+
 const tonicasOrdenadas = [ // Ordeno las tónicas en el orden conocido: do re mi fa sol.. (con las teclas negras del piano entremedio)
     tonicasAvanzadas[1],
     tonicasAvanzadas[8],

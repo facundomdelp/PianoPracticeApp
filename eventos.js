@@ -6,16 +6,45 @@ renderizarBotones();
 document.getElementById("botonInstrucciones").addEventListener("click", mostrarUOcultarInstrucciones);
 
 // Evento para activar posibles combinaciones a partir del boton de dificultad seleccionado
-for (const dificultad of dificultades) {
+for(const dificultad of dificultades) {
     document.getElementById(`btn${dificultad}`).addEventListener("click",function(){funcionDificultadSeleccionada(dificultad)});
 };
 
-// Evento para generar la rutina
+// Se descarga el Local Storage
+const almacenados = JSON.parse(localStorage.getItem("escalasPracticadas"));
 const escalas = [];
-document.getElementById("aleatorio").addEventListener("click", crearRutina);
+
+if(almacenados !== null) {
+    for(const objeto of almacenados) {
+        escalas.push(new Escala(objeto))
+    }
+}
+
+console.log(escalas);
+
+// Evento para generar la rutina, cuando se aprieta el botón de crear rutina aleatoria
+document.getElementById(`btn${aleatorio}`).addEventListener("click", crearRutina);
+
+// Eventos para activar teclas del piano por todos los botones excepto el de rutina aleatoria
+const escalasAuxiliaresParaActivarTeclasPiano = [];
+
+for(const tonica of tonicasOrdenadas) {
+    document.getElementById(`btn${tonica}`).addEventListener("click", function(){activarBotonTonicaIndependiente(tonica)})
+}
+
+for(const familia of familias) {
+    document.getElementById(`btn${familia}`).addEventListener("click", function(){activarBotonFamiliaIndependiente(familia)})
+}
+
+for(const modo of modosOrdenados) {
+    document.getElementById(`btn${modo}`).addEventListener("click", function(){activarBotonModoIndependiente(modo)})
+}
 
 // Evento para reproducir el sonido de la nota musical según la tecla del piano que se presiona
 for (const tonica of tonicasOrdenadas) {
     document.getElementById(`piano${tonica}`).addEventListener("click", function() {reproducirSonido(tonica)});
 }
+
+// STORAGE
+
 
