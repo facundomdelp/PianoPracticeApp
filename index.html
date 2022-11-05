@@ -13,20 +13,7 @@
     
         <section id="inicio">
             <h1>¡Bienvenido a PianoPracticeApp!</h1>
-            <span id="instrucciones">
-                <span id="botonInstrucciones" style="cursor: pointer">INSTRUCCIONES</span>
-                <p>
-                    <br> Bienvenido a PianoPracticeApp, la aplicación que te ayudará a practicar tus lecciones de piano, creando escalas aleatorias.<br><br>
-                    Esta aplicación, es para que uses junto a tu piano y puedas mejorar tu performance mediante sencillos ejercicios de rutina. <br><br>
-                    En primer lugar, elige tu nivel de piano. <br>
-                    Para los estudiantes que se están iniciando con este instrumento, seleccionar el botón "Principiante". <br><br>
-                    Para los estudiantes que ya tienen algún conocimiento, seleccionar el botón "Intermedio". <br><br>
-                    Para aquellos estudiantes de alto nivel, seleccionar el botón "Avanzado". <br><br>
-                    De acuerdo al botón seleccionado, se desbloquearán los diferentes elementos que componen a una escala musical, para que puedas practicar ea partir de tus conocimientos. <br><br>
-                    Para esto, el botón "Crear Escala Aleatoria", te brindará una escala de diferentes elementos de manera aleatoria, que depende de la dificultad seleccionada. <br><br>
-                    La figura del piano te indicará cuáles son las notas que componen aquella escala, para que puedas comenzar a practicarla con tu propio piano. <br><br>
-                </p>
-            </span>
+            <span id="instrucciones" style="cursor: pointer">INSTRUCCIONES</span>
         </section>
 
         <section class="botones">
@@ -40,23 +27,33 @@
         <section class="botones">
             <ul id="tonica"></ul>
             <ul id="familia"></ul>
-
         </section>
 
-        <ul class="piano">
-            <li style="cursor: pointer" class="blanca" id="pianoDO"></li>
-            <li style="cursor: pointer" class="negra" id="pianoREb"></li>
-            <li style="cursor: pointer" class="blanca" id="pianoRE"></li>
-            <li style="cursor: pointer" class="negra" id="pianoMIb"></li>
-            <li style="cursor: pointer" class="blanca" id="pianoMI"></li>
-            <li style="cursor: pointer" class="blanca" id="pianoFA"></li>
-            <li style="cursor: pointer" class="negra" id="pianoFA#"></li>
-            <li style="cursor: pointer" class="blanca" id="pianoSOL"></li>
-            <li style="cursor: pointer" class="negra" id="pianoLAb"></li>
-            <li style="cursor: pointer" class="blanca" id="pianoLA"></li>
-            <li style="cursor: pointer" class="negra" id="pianoSIb"></li>
-            <li style="cursor: pointer" class="blanca" id="pianoSI"></li>
-        </ul>
+        <section class="imagenes">
+            <div class="figuras">
+                <img id="legato" src="./img/Legato.png" alt="Legato">
+                <img id="staccato" src="./img/Staccato.png" alt="Staccato">
+            </div>
+            <ul class="piano">
+                <li style="cursor: pointer" class="blanca" id="pianoDO"></li>
+                <li style="cursor: pointer" class="negra" id="pianoREb"></li>
+                <li style="cursor: pointer" class="blanca" id="pianoRE"></li>
+                <li style="cursor: pointer" class="negra" id="pianoMIb"></li>
+                <li style="cursor: pointer" class="blanca" id="pianoMI"></li>
+                <li style="cursor: pointer" class="blanca" id="pianoFA"></li>
+                <li style="cursor: pointer" class="negra" id="pianoFA#"></li>
+                <li style="cursor: pointer" class="blanca" id="pianoSOL"></li>
+                <li style="cursor: pointer" class="negra" id="pianoLAb"></li>
+                <li style="cursor: pointer" class="blanca" id="pianoLA"></li>
+                <li style="cursor: pointer" class="negra" id="pianoSIb"></li>
+                <li style="cursor: pointer" class="blanca" id="pianoSI"></li>
+            </ul>
+            <div class="figuras">
+                <img id="piano"src="./img/Piano.png" alt="Piano">
+                <img id="forte" src="./img/Forte.png" alt="Forte">
+                <img id="mezzoforte" src="./img/Mezzoforte.png" alt="Mezzoforte">
+            </div>
+        </section>
 
         <section class="botones">
             <ul id="modo"></ul>
@@ -67,6 +64,7 @@
         <script src="./constantes.js"></script>
         <script src="./funciones.js"></script>
         <script src="./eventos.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     </section>
 

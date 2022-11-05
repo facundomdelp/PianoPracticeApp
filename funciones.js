@@ -29,11 +29,21 @@ function deshabilitarBoton(btns) {
 // Función para abrir o cerrar el panel de instrucciones
 function mostrarUOcultarInstrucciones() {
 
-    if(document.getElementById("instrucciones").className !== "mostrarInstrucciones") {
-        document.getElementById("instrucciones").className = "mostrarInstrucciones";
-    } else if(document.getElementById("instrucciones").className == "mostrarInstrucciones") {
-        document.getElementById("instrucciones").className = "";
-    }
+    Swal.fire({
+        html: 
+        '<p>'+
+        '<br> Bienvenido a PianoPracticeApp, la aplicación que te ayudará a practicar tus lecciones de piano, creando escalas aleatorias.<br><br>'+
+        'Esta aplicación, es para que uses junto a tu piano y puedas mejorar tu performance mediante sencillos ejercicios de rutina. <br><br>'+
+        'En primer lugar, elige tu nivel de piano. <br><br>'+
+        'Para los estudiantes que se están iniciando con este instrumento, seleccionar el botón "Principiante". <br><br>'+
+        'Para los estudiantes que ya tienen algún conocimiento, seleccionar el botón "Intermedio". <br><br>'+
+        'Para aquellos estudiantes de alto nivel, seleccionar el botón "Avanzado". <br><br>'+
+        'De acuerdo al botón seleccionado, se desbloquearán los diferentes elementos que componen a una escala musical, para que puedas practicar ea partir de tus conocimientos. <br><br>'+
+        'Para esto, el botón "Crear Escala Aleatoria", te brindará una escala de diferentes elementos de manera aleatoria, que depende de la dificultad seleccionada. <br><br>'+
+        'La figura del piano te indicará cuáles son las notas que componen aquella escala, para que puedas comenzar a practicarla con tu propio piano. <br><br>'+
+        '</p>',
+        width: 500
+    });
 }
 
 // Botones activados
@@ -57,6 +67,8 @@ function funcionDificultadSeleccionada(dificultad) {
     habilitarBoton(aleatorio)
     habilitarBoton(dificultades);
     habilitarBoton(tecnicas);
+    desactivarTeclasPiano();
+    desactivarFigurasTecnicaYNivel();
     if(dificultad == "Principiante") {
         document.getElementById("btnPrincipiante").className = "enabled";
         habilitarBoton(tonicasPrincipiantes);
@@ -88,7 +100,6 @@ function crearRutina() {
                 familias[0],
                 modosAvanzados[0],
                 elementoAleatorio(tecnicas),
-                niveles[0]
             ));
 
             habilitarBoton(tonicasPrincipiantes);
@@ -98,6 +109,9 @@ function crearRutina() {
 
             desactivarTeclasPiano();
             activarEscalaPiano(escalas);
+
+            desactivarFigurasTecnicaYNivel();
+            activarFiguraTecnica(escalas);
 
 
         } else if(dificultadSeleccionada == "Intermedio.enabled") {
@@ -120,6 +134,9 @@ function crearRutina() {
 
             desactivarTeclasPiano();
             activarEscalaPiano(escalas);
+
+            desactivarFigurasTecnicaYNivel();
+            activarFiguraTecnica(escalas);
 
         } else if(dificultadSeleccionada == "Avanzado.enabled") {
             escalas.push(new Escala(
@@ -145,6 +162,10 @@ function crearRutina() {
 
             desactivarTeclasPiano();
             activarEscalaPiano(escalas);
+
+            desactivarFigurasTecnicaYNivel();
+            activarFiguraTecnica(escalas);
+            activarFiguraNivel(escalas);
         }
     }
 
@@ -233,7 +254,7 @@ function activarEscalaPiano(escalas) {
 function activarSieteTeclasPiano(escalas, saltoDeTonos) {
 
     let tonos = 0;
-    for (let i = 0; i < 6; i++) {
+    for(let i = 0; i < 6; i++) {
         tonos = tonos + saltoDeTonos[i] * 2;
         activarTeclasPiano(dosOctavasOrdenadas[tonicasOrdenadas.indexOf(escalas[escalas.length - 1].tonica) + tonos]);
     } 
@@ -247,6 +268,27 @@ function intervalosSegunModo(escalas, saltoDeTonos) {
         saltoDeTonos.shift();
     }
     return saltoDeTonos
+}
+
+// Función para desactivar las figuras de técnica y nivel
+function desactivarFigurasTecnicaYNivel() {
+
+    const figurasActivadas = document.getElementsByClassName("display");
+    for(const figura of [...figurasActivadas]) {
+        figura.className = "";
+    }
+}
+
+// Función para activar la figura de la técnica que corresponde
+function activarFiguraTecnica(escalas) {
+    
+    document.getElementById(`${escalas[escalas.length - 1].tecnica.toLowerCase()}`).className = "display";
+}
+
+// Función para activar la figura del nivel que corresponde
+function activarFiguraNivel(escalas) {
+    
+    document.getElementById(`${escalas[escalas.length - 1].nivel.toLowerCase()}`).className = "display";
 }
 
 // Función para cuando se activa un botón de tónica de manera independiente, es decir, sin utilizar el botón de rutina
@@ -383,6 +425,69 @@ function activarBotonModoIndependiente(modo) {
         activarEscalaPiano(escalasAuxiliaresParaActivarTeclasPiano);
     }
 }
+
+// Función para cuando se activa un botón de tecnica de manera independiente, es decir, sin utilizar el botón de rutina
+function activarBotonTecnicaIndependiente(tecnica) {
+
+    if(document.getElementById(`btn${tecnica}`).className !== "disabled") {
+        desactivarFigurasTecnicaYNivel();
+        habilitarBoton(tecnicas);
+        activarBoton(tecnica);
+
+        if((document.getElementById("btnPrincipiante").className == "enabled") || (document.getElementById("btnIntermedio").className == "enabled") || (document.getElementById("nivel").getElementsByClassName("enabled")[0] == undefined)) {
+            nivel = undefined;
+        }else if(document.getElementById("btnAvanzado").className == "enabled") {
+            nivel = document.getElementById("nivel").getElementsByClassName("enabled")[0].innerText;
+        }
+        
+        escalasAuxiliaresParaActivarTeclasPiano.push(new Escala(
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            tecnica,
+            nivel,
+        ));
+        
+        activarFiguraTecnica(escalasAuxiliaresParaActivarTeclasPiano);
+        if(document.getElementById("nivel").getElementsByClassName("enabled")[0] !== undefined) {
+            activarFiguraNivel(escalasAuxiliaresParaActivarTeclasPiano);
+        }
+    }
+}
+
+// Función para cuando se activa un botón de nivel de manera independiente, es decir, sin utilizar el botón de rutina
+function activarBotonNivelIndependiente(nivel) {
+
+    if(document.getElementById(`btn${nivel}`).className !== "disabled") {
+        desactivarFigurasTecnicaYNivel();
+        habilitarBoton(niveles);
+        activarBoton(nivel);
+
+        if(document.getElementById("tecnica").getElementsByClassName("enabled")[0] == undefined) {
+            tecnica = undefined;
+        } else {
+            tecnica = document.getElementById("tecnica").getElementsByClassName("enabled")[0].innerText;
+        }
+
+        escalasAuxiliaresParaActivarTeclasPiano.push(new Escala(
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            tecnica,
+            nivel
+        ));
+        
+        if(document.getElementById("tecnica").getElementsByClassName("enabled")[0] !== undefined) {
+            activarFiguraTecnica(escalasAuxiliaresParaActivarTeclasPiano);
+        }
+        activarFiguraNivel(escalasAuxiliaresParaActivarTeclasPiano);
+    }
+}
+
 
 // Función para reproducir el sonido
 function reproducirSonido(tonica) {

@@ -3,7 +3,7 @@
 renderizarBotones();
 
 // Evento para abrir y cerrar el botón de instrucciones
-document.getElementById("botonInstrucciones").addEventListener("click", mostrarUOcultarInstrucciones);
+document.getElementById("instrucciones").addEventListener("click", mostrarUOcultarInstrucciones);
 
 // Evento para activar posibles combinaciones a partir del boton de dificultad seleccionado
 for(const dificultad of dificultades) {
@@ -38,6 +38,15 @@ for(const familia of familias) {
 
 for(const modo of modosOrdenados) {
     document.getElementById(`btn${modo}`).addEventListener("click", function(){activarBotonModoIndependiente(modo)})
+}
+
+// Eventos para activar las figuras según técnica o nivel
+for(const tecnica of tecnicas) {
+    document.getElementById(`btn${tecnica}`).addEventListener("click", function(){activarBotonTecnicaIndependiente(tecnica)})
+}
+
+for(const nivel of niveles) {
+    document.getElementById(`btn${nivel}`).addEventListener("click", function(){activarBotonNivelIndependiente(nivel)})
 }
 
 // Evento para reproducir el sonido de la nota musical según la tecla del piano que se presiona

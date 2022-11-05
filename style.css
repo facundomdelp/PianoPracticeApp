@@ -10,21 +10,9 @@
 
     /* Pallete */
     --color1: #1F2023;
-    --color2: #e5f876;
-    --color3: #b6be84;
+    --color2: #ffffff;
+    --color3: #bebebe;
 
-}
-
-/* ANIMACIONES */
-
-@keyframes animacionInstrucciones {
-
-    100% {
-        z-index: 5;
-        width: 56em;
-        height: 51em;
-        margin-left: 0;
-        }
 }
 
 /* RESET CSS */
@@ -45,7 +33,6 @@ body {
     line-height: 1.5;
     font-family: var(--font);
     width: 100%;
-    min-height: 100vh;
 }
 
 a {  
@@ -75,10 +62,8 @@ body {
 
     background-image: url(./img/fondo.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center;
 
-    overflow: hidden;
 }
 
 #principal {
@@ -112,41 +97,23 @@ body {
 
 #instrucciones {
 
-    position: absolute;
+    width: 10em;
+    height: 3em;
+    
     display: flex;
-    flex-direction: column;
-    width: 9em;
-    height: 2.25em;
-    overflow: hidden;
+    justify-content: center;
     align-items: center;
-    padding: .4em;
-    margin-left: 47em;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.mostrarInstrucciones {
-    animation: animacionInstrucciones 1 linear .25s .05s; animation-fill-mode: both;
-}
-
-
-#instrucciones span {
-
-    align-self: flex-end;
-    text-align: center;
     font-size: .9em;
     font-weight: 600;
 }
 
-#instrucciones p {
-    
-    padding-inline: 2em;
-    margin-top: 1em;
+p {
+
+    text-align: left;
     font-size: 1.25em;
-    align-self: flex-start;
 }
 
 /* LAY OUT */
@@ -183,6 +150,36 @@ body {
     padding-inline: 1em;
     margin-block: .5em;
     flex-basis: 100%;
+}
+
+.imagenes {
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-block: calc(2*var(--space));
+}
+
+.imagenes .figuras {
+
+    width: 4em;
+    height: auto;
+}
+
+.imagenes .figuras img {
+
+    display: none;
+}
+
+.imagenes .figuras .display {
+
+    display: block;
+}
+
+.imagenes .figuras #mezzoforte {
+
+    height: 4em;
+    width: auto;
 }
 
 /* ESTILOS BOTONES */
@@ -233,7 +230,6 @@ body {
 
     height: 18.875em;
     width: 34em;
-    margin: 2em auto;
     padding: 3em 0 0 3em;
     position: relative;
     text-align: center;
