@@ -63,13 +63,12 @@ body {
     background-image: url(./img/fondo.jpg);
     background-size: cover;
     background-position: center;
-
 }
 
 #principal {
 
     margin-inline: auto;
-    margin-top: calc(2*var(--space));
+    margin-top: var(--space);
     padding: var(--space);
     max-width: 600px;
 
@@ -122,7 +121,12 @@ p {
 
     display: flex;
     gap: .75em;
-    margin-block: calc(.6em);
+    margin-block: 2em;
+}
+
+.botones #nivel {
+
+    margin-bottom: 0;
 }
 
 .botones ul button {
@@ -131,7 +135,7 @@ p {
     flex-basis: 100%;
     justify-content: center;
     align-items: center;
-    height: 2.5em;
+    height: 3em;
 }
 
 .botones ul {
@@ -157,7 +161,7 @@ p {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-block: calc(2*var(--space));
+    margin-block: var(--space);
 }
 
 .imagenes .figuras {
@@ -330,12 +334,28 @@ p {
     html {
         font-size: 50%;
     }
+
+    .botones ul button {
+
+        height: 4em;
+    }
 }
 
 @media(max-width: 425px) {
 
     .piano {
         font-size: 95%;
+    }
+
+    .botones #tonica {
+
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .botones #modo {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -344,4 +364,5 @@ p {
     .piano {
         font-size: 80%;
     }
+
 }
