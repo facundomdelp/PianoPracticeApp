@@ -16,10 +16,9 @@ const escalas = [];
 
 if(almacenados !== null) {
     for(const objeto of almacenados) {
-        escalas.push(new Escala(objeto))
+        escalas.push(new Escala(objeto.ejercicio, objeto.dificultad, objeto.tonica, objeto.familia, objeto.modo, objeto.tecnica, objeto.nivel))
     }
 }
-
 console.log(escalas);
 
 // Evento para generar la rutina, cuando se aprieta el botón de crear rutina aleatoria
@@ -54,6 +53,8 @@ for (const tonica of tonicasOrdenadas) {
     document.getElementById(`piano${tonica}`).addEventListener("click", function() {reproducirSonido(tonica)});
 }
 
-// STORAGE
+// Evento para ver las escalas ya practicadas
+document.getElementById("historial").addEventListener("click", verEscalas);
 
-
+// Evento para obtener información de una API y renderizarla (se utiliza un archivo JSON que simula a una API)
+document.getElementById("lecciones").addEventListener("click", botonLecciones);

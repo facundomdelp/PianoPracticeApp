@@ -14,15 +14,15 @@ function renderizarBotones() {
 
 // Botones habilitados para activar
 function habilitarBoton (btns) {
-    for(const x of btns) {
-        document.getElementById(`btn${x}`).removeAttribute("class");
+    for(const btn of btns) {
+        document.getElementById(`btn${btn}`).removeAttribute("class");
     }
 }
 
 // Botones dehabilitados
 function deshabilitarBoton(btns) {
-    for(const x of btns) {
-        document.getElementById(`btn${x}`).className = "disabled";
+    for(const btn of btns) {
+        document.getElementById(`btn${btn}`).className = "disabled";
     }
 }
 
@@ -33,12 +33,12 @@ function mostrarUOcultarInstrucciones() {
         html: 
         '<p>'+
         '<br> Bienvenido a PianoPracticeApp, la aplicación que te ayudará a practicar tus lecciones de piano, creando escalas aleatorias.<br><br>'+
-        'Esta aplicación, es para que uses junto a tu piano y puedas mejorar tu performance mediante sencillos ejercicios de rutina. <br><br>'+
+        '¡Recuerda que esta aplicación es para usarla junto a tu propio instrumento musical!<br>El pequeño piano de esta aplicación es solo para ayudarte a recordar las escalas musicales.<br><br>'+
         'En primer lugar, elige tu nivel de piano. <br><br>'+
         'Para los estudiantes que se están iniciando con este instrumento, seleccionar el botón "Principiante". <br><br>'+
         'Para los estudiantes que ya tienen algún conocimiento, seleccionar el botón "Intermedio". <br><br>'+
         'Para aquellos estudiantes de alto nivel, seleccionar el botón "Avanzado". <br><br>'+
-        'De acuerdo al botón seleccionado, se desbloquearán los diferentes elementos que componen a una escala musical, para que puedas practicar ea partir de tus conocimientos. <br><br>'+
+        'De acuerdo al botón seleccionado, se desbloquearán los diferentes elementos que componen a una escala musical, para que puedas practicar a partir de tus conocimientos. <br><br>'+
         'Para esto, el botón "Crear Escala Aleatoria", te brindará una escala de diferentes elementos de manera aleatoria, que depende de la dificultad seleccionada. <br><br>'+
         'La figura del piano te indicará cuáles son las notas que componen aquella escala, para que puedas comenzar a practicarla con tu propio piano. <br><br>'+
         '</p>',
@@ -491,7 +491,82 @@ function activarBotonNivelIndependiente(nivel) {
 
 // Función para reproducir el sonido
 function reproducirSonido(tonica) {
-        let audio = sonidos[tonicasOrdenadas.indexOf(tonica)];
-        audio.currentTime = 0
-        audio.play();
+    let audio = sonidos[tonicasOrdenadas.indexOf(tonica)];
+    audio.currentTime = 0
+    audio.play();
+}
+
+// Función para ver el historial de las escalas practicadas
+function verEscalas() {
+
+    if(escalas.length == 0) {
+        Swal.fire(`No has practicado ninguna escala.`)
+    }else if(escalas.length == 1) {
+        let ultimoNivel = (escalas[escalas.length - 1].nivel || "sin definir");
+        Swal.fire({
+            title: `La última escala practicada es:`,
+            html:
+                `${escalas[escalas.length - 1].tonica} - ${escalas[escalas.length - 1].familia} - ${escalas[escalas.length - 1].modo} - ${escalas[escalas.length - 1].tecnica} - ${ultimoNivel}<br>`,
+            width: 500,    
+        })
+    }else if(escalas.length == 2) {
+        let ultimoNivel = (escalas[escalas.length - 1].nivel || "sin definir");
+        let anteultimoNivel = (escalas[escalas.length - 2].nivel || "sin definir");
+        Swal.fire({
+            title: `Las últimas 3 escalas practicadas son:`,
+            html:
+                `${escalas[escalas.length - 1].tonica} - ${escalas[escalas.length - 1].familia} - ${escalas[escalas.length - 1].modo} - ${escalas[escalas.length - 1].tecnica} - ${ultimoNivel}<br>`+
+                `${escalas[escalas.length - 2].tonica} - ${escalas[escalas.length - 2].familia} - ${escalas[escalas.length - 2].modo} - ${escalas[escalas.length - 2].tecnica} - ${anteultimoNivel}<br>`,
+            width: 500,            
+        })
+    }else {
+        let ultimoNivel = (escalas[escalas.length - 1].nivel || "sin definir");
+        let anteultimoNivel = (escalas[escalas.length - 2].nivel || "sin definir");
+        let antepenultimoNivel = (escalas[escalas.length - 3].nivel || "sin definir");
+        Swal.fire({
+            title: `Las últimas 3 escalas practicadas son:`,
+            html:
+                `${escalas[escalas.length - 1].tonica} - ${escalas[escalas.length - 1].familia} - ${escalas[escalas.length - 1].modo} - ${escalas[escalas.length - 1].tecnica} - ${ultimoNivel}<br>`+
+                `${escalas[escalas.length - 2].tonica} - ${escalas[escalas.length - 2].familia} - ${escalas[escalas.length - 2].modo} - ${escalas[escalas.length - 2].tecnica} - ${anteultimoNivel}<br>`+
+                `${escalas[escalas.length - 3].tonica} - ${escalas[escalas.length - 3].familia} - ${escalas[escalas.length - 3].modo} - ${escalas[escalas.length - 3].tecnica} - ${antepenultimoNivel}<br>`,
+            width: 500,            
+        })
+    }
+}
+
+// Función para llamar a una API externa (simulado por un archivo JSON propio)
+function botonLecciones() {
+
+    const URLJSON = "./cursos.json";
+    fetch(URLJSON)
+        .then(resultado => resultado.json())
+        .then(datosRecibidos => {
+            const cursosGratuitos = datosRecibidos.cursos;
+            console.log(cursosGratuitos);
+            Swal.fire({
+                html: renderizarLecciones(cursosGratuitos),
+                width: 500,
+            })
+        })
+}
+
+// Función para renderizar la API dentro de un Sweet Alert
+function renderizarLecciones(cursosGratuitos) {
+
+    let htmlRenderizado = "";
+
+    for(const objeto of cursosGratuitos) {
+        htmlRenderizado += `
+            <section class="cartaCursos">
+                <img class="fotoLeccion" src="${objeto.foto}" alt="foto curso 1">
+                <div>
+                    <h2>${objeto.titulo}</h2>
+                    <article>${objeto.descripcion}</article>
+                    <a target="_blank" href="${objeto.url}"><button style="cursor: pointer">Ver Curso</button></a>
+                </div>
+            </section>
+            `
+    }
+    
+    return htmlRenderizado
 }

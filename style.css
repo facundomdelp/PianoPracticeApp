@@ -12,7 +12,6 @@
     --color1: #1F2023;
     --color2: #ffffff;
     --color3: #bebebe;
-
 }
 
 /* RESET CSS */
@@ -68,10 +67,9 @@ body {
 #principal {
 
     margin-inline: auto;
-    margin-top: var(--space);
+    margin-block: var(--space);
     padding: var(--space);
     max-width: 600px;
-
 
     background: rgba(149, 149, 149, 0.25);
     border-radius: 16px;
@@ -94,7 +92,7 @@ body {
     color: white;
 }
 
-#instrucciones {
+.botonAlternativo {
 
     width: 10em;
     height: 3em;
@@ -122,11 +120,6 @@ p {
     display: flex;
     gap: .75em;
     margin-block: 2em;
-}
-
-.botones #nivel {
-
-    margin-bottom: 0;
 }
 
 .botones ul button {
@@ -184,6 +177,56 @@ p {
 
     height: 4em;
     width: auto;
+}
+
+#botonesFinales {
+
+    display: flex;
+    justify-content: flex-end;
+    gap: .75em;
+}
+
+.cartaCursos {
+
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+.cartaCursos div {
+
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    width: 100%;
+}
+
+.cartaCursos div h2 {
+
+    align-self: flex-start;
+}
+
+.cartaCursos div article {
+    
+    text-align: left;
+}
+
+.cartaCursos div a {
+
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.cartaCursos button {
+
+    padding-inline: .5em;
+}
+
+.fotoLeccion {
+
+    width: 10em;
+    height: 10em;
 }
 
 /* ESTILOS BOTONES */

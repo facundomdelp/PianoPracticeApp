@@ -1,3 +1,0 @@
-const tipos = ["Escala", "Arpegio", "Acorde"];
-const velocidadesEnBPM = [80, 100, 60];
-const tiemposEnSegundos = 60;

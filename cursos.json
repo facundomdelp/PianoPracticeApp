@@ -1,0 +1,47 @@
+{
+    "cursos": [{
+            "titulo": "Piano Allegro Academia Virtual",
+            "descripcion": "El mejor Curso de piano para principiantes que quieren aprender a tocar piano desde cero, Aquí ademas  de tocar piano, Aprenderás a leer música, Con una de las mejores  maestra de piano Ilsy Sanchez que les guiara a través de este curso gratuito.",
+            "foto": "./img/curso_1.jpg",
+            "url": "https://www.youtube.com/c/frankarielr"
+        },
+        {
+            "titulo": "Pianote",
+            "descripcion": "Estas lecciones de piano van a darte una rutina completa en solo 7 días. te vamos a enseñar desde lo más básico, recorriendo el teclando y tocando escalas hasta armar tus propios acordes y tocar tu primera canción!",
+            "foto": "./img/curso_2.jpg",
+            "url": "https://www.youtube.com/c/PianoteOfficial"
+        },
+        {
+            "titulo": "Piano From Scratch",
+            "descripcion": "Hice este canal para guiar a qien quiera aprender a tocar el piano o a mejorar su habilidad. Mi objetivo es cubrir la mayor cantidad de aspectos del piano como sea posible, dándote todo el conocimiento que me ha dado a mi y a mis estudiantes",
+            "foto": "./img/curso_3.jpg",
+            "url": "https://www.youtube.com/c/PianoFromScratch"
+        },
+        {
+            "titulo": "PianoVideoLessons",
+            "descripcion": "Nueva clase online de piano: En esta versión gratuita online de tutoriales para principiantes vamos a aprender de todo. Vas a aprender sobre notas altas y bajas, notas espaciadas, tocar con la mano derecha, mano izquierda y mucho más. También aprenderas a moverte por todo el teclado!",
+            "foto": "./img/curso_4.jpg",
+            "url": "https://www.youtube.com/c/PianoVideoLessons"
+        },
+        {
+            "titulo": "Andrew Furmanczyk",
+            "descripcion": "Hola, soy un pianista y profesor de piano. Este canal está enfocado en proveer el 100% de la educación musical gratuita para personas que tienen pasión por aprender música pero no pueden pagarlo, o simplemnete para personas que quieren investigar la música. My forma de enseñar es lo que me hace diferente. En lugar de mostrarte canciones que te hagan dependientes a mi canal, mi objetito es darte toda la información que necesitas para algún día tocar música por vos mismo",
+            "foto": "./img/curso_5.jpg",
+            "url": "https://www.youtube.com/c/pianolounge"
+        },
+        {
+            "titulo": "MangoldProject",
+            "descripcion": "Mi nombre es ManogldProject (bueno, en realidad es Assaf) y estoy aquí para convertirte en un mejor pianista y mejor músico! He tocado el piano más de 20 años y amo enseñar lo que sé. Tener un entendimiento más profundo sobre el teclado y la teoría musical es un proceso largo, por lo que espero que disfrutes estos videos y te inspiren.",
+            "foto": "./img/curso_6.jpg",
+            "url": "https://www.youtube.com/c/MangoldProject"
+        }
+        ,
+        {
+            "titulo": "Betacustic",
+            "descripcion": "Aprende a tocar el piano divirtiéndote!",
+            "foto": "./img/curso_7.jpg",
+            "url": "https://www.youtube.com/c/BetacusticPiano"
+        }
+    ]
+}
+

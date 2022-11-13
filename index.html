@@ -9,12 +9,12 @@
     <title>PianoPracticeApp</title>
 </head>
 <body>
-    
-    <section id="principal">
-    
+
+    <main id="principal">
+
         <section id="inicio">
             <h1>¡Bienvenido a PianoPracticeApp!</h1>
-            <span id="instrucciones" style="cursor: pointer">INSTRUCCIONES</span>
+            <div id="instrucciones" class="botonAlternativo" style="cursor: pointer">INSTRUCCIONES</div>
         </section>
 
         <section class="botones">
@@ -62,12 +62,17 @@
             <ul id="nivel"></ul>
         </section>
 
+        <section id="botonesFinales">
+            <div class="botonAlternativo" id="historial" style="cursor: pointer">HISTORIAL</div>
+            <div class="botonAlternativo" id="lecciones" style="cursor: pointer">LECCIONES</div>
+        </section>
+
         <script src="./constantes.js"></script>
         <script src="./funciones.js"></script>
         <script src="./eventos.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    </section>
+    </main>
 
 </body>
 </html>
